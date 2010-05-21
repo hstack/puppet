@@ -1,0 +1,10 @@
+## start of haresources
+<%= hostname_primary %> \
+	IPaddr::<%= virtual_ip %> \
+	drbddisk::<%= resource_name %> \
+	Filesystem::/dev/drbd0::/var/hadoop_namenode::ext3::defaults \
+	hadoop-namenode \
+	hadoop-secondarynamenode \
+	hadoop-jobtracker \
+	mon
+## end of haresources

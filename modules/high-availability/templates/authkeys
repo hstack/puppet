@@ -1,0 +1,4 @@
+## start of authkeys
+auth 1
+1 sha1 hadoop-master
+## end of authkeys

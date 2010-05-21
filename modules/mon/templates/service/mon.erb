@@ -1,0 +1,37 @@
+#!/bin/bash
+MON_HOME=<%= mon_home %>
+MON_AUTH=<%= mon_home %>/conf/auth.cf
+MON_CONF=<%= mon_home %>/conf/mon.cf
+MON_LOGS=<%= mon_log_dir %>
+case "$1" in
+    start)
+        if [ -f $MON_HOME/mon.pid ]; then
+                echo "mon already started"
+                exit
+        fi
+        echo "Starting Mon"
+    $MON_HOME/mon -A $MON_AUTH -c $MON_CONF -P $MON_HOME/mon.pid -L $MON_LOGS &
+        ;;
+    stop)
+    if [ -f $MON_HOME/mon.pid ]; then
+    echo "Stopping Mon"
+        kill -9 `cat $MON_HOME/mon.pid`
+        rm  -f $MON_HOME/mon.pid
+    else
+        echo "no server pid, server doesn't seem to run"
+    fi
+
+    ;;
+    status)
+	if [ -f $MON_HOME/mon.pid ]; then
+        	echo "doing good"
+	else 
+		echo "No pid file. Probably stopped or manually started"
+	fi
+        ;;
+    *)
+    echo "Usage: $0 {start|stop|status|reload|restart}"
+    exit 1
+esac
+exit 0
+

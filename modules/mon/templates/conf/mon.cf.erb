@@ -1,0 +1,21 @@
+# mon.cf - simple namenode process enforcing failover
+# to test it without actually triggering a failover, 
+# use test.alert insteadof stopha.alert
+
+alertdir   = <%= mon_home %>/alert.d
+mondir     = <%= mon_home %>/mon.d
+maxprocs    = 20
+histlength = 100
+randstart = 60s
+
+#
+# define groups of hosts to monitor
+#
+hostgroup servers localhost
+
+watch servers
+    service namenode
+        interval 2s
+        monitor ps.monitor org.apache.hadoop.hdfs.server.namenode.NameNode:1- ;;
+	period wd {Mon-Fri} hr {0am-12pm}
+		alert stopha.alert

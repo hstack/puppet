@@ -1,0 +1,13 @@
+## start of ha.cf
+debugfile /var/log/ha.debug
+logfile /var/log/ha.log
+logfacility local0
+keepalive 1
+warntime 10
+deadtime 10
+initdead 60
+mcast eth0 239.0.0.1 694 1 0
+node <%= hostname_primary %> 
+node <%= hostname_secondary %>
+auto_failback off
+## end of ha.cf

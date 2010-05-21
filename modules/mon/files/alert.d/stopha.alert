@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# $Id: test.alert,v 1.1.1.1 2004/06/09 05:18:07 trockij Exp $
+/usr/lib64/heartbeat/hb_standby all
+#echo "`date` $*" >> /tmp/test.alert.log

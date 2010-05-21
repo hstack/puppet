@@ -1,0 +1,88 @@
+#!/usr/bin/perl
+
+# Monitors processes on the local host.  Requires Proc::ProcessTable
+
+# usage:
+#    monitor ps.monitor ( process:[min]-[max] )+ ;;
+#
+# where:
+#    process	process name | unique item in commandline
+#    min	optional minimum number of process name running
+#    max	optional maxumum number of process name running
+#
+# example:
+#    monitor ps.monitor dhcpd3:1-1 syslog-ng:1- ;;
+
+
+#Copyright 2005 Allan Wind
+#
+#Permission is hereby granted, free of charge, to any person obtaining a copy of
+#this software and associated documentation files (the "Software"), to deal in
+#the Software without restriction, including without limitation the rights to
+#use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+#of the Software, and to permit persons to whom the Software is furnished to do
+#so, subject to the following conditions:
+#
+#The above copyright notice and this permission notice shall be included in all
+#copies or substantial portions of the Software.
+#
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#SOFTWARE.
+
+# modified by civascu
+# Changes:
+#	The given process name is also looked up in the process commandline
+#	used to find the NameNode process
+#	TODO: fix this so that it takes it as a command param
+
+use Proc::ProcessTable;
+
+
+# parse command line
+my %watched_processes;
+while(<@ARGV>) {
+	if(m/([^:]+):([0-9]*)?-([0-9]*)?/) {
+		# $1 is process, $2 is min and $3 is max
+		$watched_processes{$1} = [$2, $3, 0];
+	} else {
+		print "Cannot parse the argument \"$_\"\n";
+	}
+}
+
+
+# read process table and count the processes of interest
+my $process_table = new Proc::ProcessTable('cache_ttys' => 0 );
+foreach $process ( @{$process_table->table} ) {
+	if( defined($watched_processes{$process->fname}) ) {
+		$watched_processes{$process->fname}[2]++;
+	} else {
+		while ( ($key, $value) = each(%watched_processes) ) {
+			if ( index($process->cmndline, $key) > 0 && $process->fname ne "ps.monitor") {
+				$watched_processes{$key}[2]++;
+			}
+		}
+	}
+}
+
+
+# print name:count of processes if needed
+my $report = 0;
+for $process (keys(%watched_processes)) {
+
+	my $count = $watched_processes{$process}[2];
+	my $min = $watched_processes{$process}[0] || $count;
+	my $max = $watched_processes{$process}[1] || $count;
+	
+	if($min > $count || $max < $count) {
+		$report = 1;
+		print "$process:$watched_processes{$process}[2]\n";
+	}
+}
+
+
+exit $report;
