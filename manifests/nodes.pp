@@ -1,21 +1,19 @@
 # nodes.pp
 #
 # module imports
-import "mon"
-import "grinder"
-import "gitorious"
-import "hbase"
-import "hbase/services"
+import "adobe-mon"
+import "adobe-hbase"
+import "adobe-hbase/services"
 
-import "hadoop"
-import "hadoop/services"
+import "adobe-hadoop"
+import "adobe-hadoop/services"
 
-import "zookeeper"
-import "zookeeper/services"
+import "adobe-zookeeper"
+import "adobe-zookeeper/services"
 
-import "high-availability/drbd"
-import "high-availability/drbd-primary"
-import "high-availability/heartbeat"
+import "adobe-high-availability/drbd"
+import "adobe-high-availability/drbd-primary"
+import "adobe-high-availability/heartbeat"
 
 
 # puppet roles for different servers
@@ -92,7 +90,7 @@ class zookeeper {
     include zookeeper
 }
 
-node "server1" extends base {
+node "server1" inherits base {
   include drbd
   include drbd-primary
   include hadoop

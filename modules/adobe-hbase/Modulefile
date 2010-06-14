@@ -1,0 +1,5 @@
+name    'adobe-hbase'
+version '0.0.1'
+
+## Add dependencies, if any:
+dependency 'adobe/zookeeper', '>= 0.0.1'

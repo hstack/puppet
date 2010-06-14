@@ -1,0 +1,52 @@
+{
+  "dependencies": [
+
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "templates/service/ubuntu/hadoop-jobtracker.erb": "e196deb4b19932a662aae35f4831617b",
+    "templates/conf/dev/hadoop-env.sh.erb": "c66cf5075f12688dee1a6757dcfb81e3",
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "lib/puppet/type/README.markdown": "34b8c80ba8683afca99f2d28ca7e70b2",
+    "templates/service/ubuntu/hadoop-tasktracker.erb": "c3800594301cdb7c0eabfc0a6f1e4e9d",
+    "templates/service/redhat/hadoop-secondarynamenode.erb": "4fb477ba32fccf8751ab37fa20b4c871",
+    "templates/service/redhat/hadoop-jobtracker.erb": "bc4d20b0ff7f1d06a24aee98ed2bce88",
+    "templates/conf/dev/hadoop-metrics.properties.erb": "2d62ed548d00de59fa4c24ea12313025",
+    "spec/unit/puppet/provider/README.markdown": "e52668944ee6af2fb5d5b9e798342645",
+    "templates/conf/dev/masters.erb": "b8419160170a41ae01abab13a3b887df",
+    "templates/conf/dev/mapred-site.xml.erb": "9787255a66ded054d9e2410fce3cda6a",
+    "templates/conf/dev/core-site.xml.erb": "31d575470ed7daba9cd539ed5466d2d0",
+    "templates/conf/dev/hdfs-site.xml.erb": "738d5053f6d7b2c0eb160aac07e4288f",
+    "files/README.markdown": "3d44458cc68d8513b51e3b56c604eec4",
+    "templates/service/ubuntu/hadoop-secondarynamenode.erb": "c19b2051eb7c7432265c1a3a925c811f",
+    "templates/service/ubuntu/hadoop-namenode.erb": "f9df8afcb800f558a645cd41d438cca0",
+    "templates/conf/dev/jmxremote.access.erb": "d7b0f67cc5af841a5db92697427c3d0a",
+    "lib/puppet/provider/README.markdown": "3835801d7626dd8d541c4fdf7ca9f3e4",
+    "lib/puppet/parser/functions/README.markdown": "e596ce938864a80fd1e51640cca7f612",
+    "templates/service/ubuntu/hadoop-datanode.erb": "9447233267e26b0c7803822d9c224aaa",
+    "templates/service/redhat/hadoop-tasktracker.erb": "8c7282b9e46244d447fd7383e54bb886",
+    "README": "7ecfbb37a09181c422aa8887fe5f8e9b",
+    "templates/service/redhat/hadoop-datanode.erb": "e01800f4a9771b630f12c6577cece3db",
+    "templates/conf/dev/jmxremote.password.erb": "6d797a69e64795989204fab341024963",
+    "manifests/README.markdown": "b9970454391883e36b55137328792a55",
+    "tests/init.pp": "f8f7d7631f8c82d2f068acdb95bf5011",
+    "templates/service/redhat/hadoop-namenode.erb": "ce09e2ac015cbe58da0914f0a3130bc4",
+    "templates/service/hadoop_service.erb": "f8a6894ac6b1ba9f171c40179144553c",
+    "templates/README.markdown": "aada0a1952329e46b98695349dba6203",
+    "templates/conf/dev/slaves.erb": "b8419160170a41ae01abab13a3b887df",
+    "spec/README.markdown": "32a1fc0121c28aff554ef5d422b8b51e",
+    "templates/service/hadoop.erb": "e34da3ddab8e33b46fc07d9c23f4693c",
+    "templates/conf/dev/log4j.properties.erb": "601cfbf7ed03ecfb483b963e4dc389d6",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "metadata.json": "d34d0b70aba36510fbc2df4e667479ef",
+    "manifests/services.pp": "fd8de8c31da2c8c938bcac919731095c",
+    "spec/unit/puppet/type/README.markdown": "de26a7643813abd6c2e7e28071b1ef94",
+    "Modulefile": "0698289b7a87a78b5d521731c037e698",
+    "manifests/init.pp": "a3dcee68cc98afc82433030a4ff60b37",
+    "lib/puppet/facter/README.markdown": "145e26334b4d80e48e9e55ba78800579"
+  },
+  "version": "0.0.1",
+  "name": "adobe-hadoop"
+}
