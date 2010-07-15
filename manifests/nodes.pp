@@ -45,7 +45,6 @@ class drbd-base {
 # LA based machines
 
 node base {
-  include jdk
   include virtual_users, virtual_groups
   realize(Group["hadoop"], User["hadoop"])
   $user="hadoop"
